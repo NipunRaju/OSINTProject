@@ -1,5 +1,6 @@
 import requests
 import argparse
+import sys
 
 def get_parameters():
     parser = argparse.ArgumentParser()
