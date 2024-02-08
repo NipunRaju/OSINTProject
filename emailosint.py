@@ -1,15 +1,4 @@
 import requests
-import argparse
-import sys
-
-def get_parameters():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--Email", dest="Email", help="Enter the email address")
-    options = parser.parse_args()
-    if not options.Email:
-        print("[-] Please specify Email, use --help for more info")
-        sys.exit(1)  # Exit with a non-zero code to indicate an error
-    return options
 
 def RED(message):
     print("\033[91m{}\033[0m".format(message))
@@ -45,9 +34,9 @@ def maildb(emailaddress):
         RED("Error: Invalid Email Address")
 
 def main():
-    options = get_parameters()
-    mail = options.Email
-    maildb(mail)
+    # Take input from the user
+    email_address = input("Enter the email address: ")
+    maildb(email_address)
 
 if __name__ == "__main__":
     main()
