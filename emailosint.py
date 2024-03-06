@@ -1,4 +1,5 @@
 import requests
+import sys
 
 def RED(message):
     print("\033[91m{}\033[0m".format(message))
@@ -8,8 +9,6 @@ def maildb(emailaddress):
         domain = emailaddress.split('@')[1]
         print("Domain:", domain)
         req = requests.get("https://api.hunter.io/v2/domain-search?domain=" + domain + "&api_key=8a3262f9f876aa2aeb81dec505da6790c09ce8be")
-        print("API Response Status Code:", req.status_code)
-        print("API Response Content:", req.text)
 
         try:
             j = req.json()
@@ -35,7 +34,7 @@ def maildb(emailaddress):
 
 def main():
     # Take input from the user
-    email_address = input("Enter the email address: ")
+    email_address = sys.argv[1]
     maildb(email_address)
 
 if __name__ == "__main__":

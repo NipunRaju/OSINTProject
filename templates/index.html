@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOCINT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center align the content */
+        }
+        h1 {
+            color: red; /* Set the color to red */
+        }
+        .container {
+            margin: 0 auto; /* Center the container horizontally */
+            width: 50%;
+            padding-top: 50px; /* Add some top padding for spacing */
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SOCINT</h1>
+        
+        <form action="/run/proxy_osint" method="post">
+            <label for="proxy_ip_address">Enter the IP address for Proxy OSINT:</label>
+            <input type="text" id="proxy_ip_address" name="proxy_ip_address">
+            <button type="submit">Run Proxy OSINT</button>
+        </form>
+
+        <form action="/run/email_osint" method="post">
+            <label for="email_address">Enter the email address for Email OSINT:</label>
+            <input type="text" id="email_address" name="email_address">
+            <button type="submit">Run Email OSINT</button>
+        </form>
+
+        <form action="/run/account_compromise" method="post">
+            <label for="account_name">Enter the account name for Account Compromise:</label>
+            <input type="text" id="account_name" name="account_name">
+            <button type="submit">Run Account Compromise</button>
+        </form>
+
+        <form action="/run/ip_osint" method="post">
+            <label for="ip_ip_address">Enter the IP address for IP OSINT:</label>
+            <input type="text" id="ip_ip_address" name="ip_address">
+            <button type="submit">Run IP OSINT</button>
+        </form>
+
+        <form action="/run/username_osint" method="post">
+            <label for="username">Enter the username for Username OSINT:</label>
+            <input type="text" id="username" name="username">
+            <button type="submit">Run Username OSINT</button>
+        </form>
+
+        {% if message %}
+        <div class="result-box">
+            <p>{{ message }}</p>
+        </div>
+        {% endif %}
+        
+        {% if result %}
+        <div class="result-box">
+            <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
